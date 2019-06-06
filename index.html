@@ -1,1 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<header>
+</header>
+<div id="inputhash"></div><br>
+<div id="inputsalt"></div><br>
+<div id="verification" style="font-weight: bolder;"></div><br>
+<div id="outputhash"></div><br>
+</body>
+<script src="sha256.js"></script>
+<script type="text/javascript">
+const params = new URLSearchParams(location.search)
+inputhash.innerHTML= "Input Hash: " + params.get('hash');
+inputsalt.innerHTML= "Input Salt: " + params.get('salt');
+outputhash.innerHTML=params.get('hash');
+outputhash.innerHTML = "Outputhash: " + sha256(params.get('salt'));
 
+if (sha256(params.get('salt')) === params.get('hash')) verification.innerHTML="Hash equals.";
+else verification.innerHTML="Hash does not equal.";
+
+</script>
+</html>

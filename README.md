@@ -1,2 +1,4 @@
 # verifyprovablyfair
 sha256 verification
+
+Example usage: https://verifyprovablyfair.github.io/verifyprovablyfair/?hash=47defd8f402ec85f4916c1615282181f4c74d94f4d8bf4202caa48a00d8ed912&salt=d2235667989768857f58412f4b4f72b8b7effa3d20f7d57b0ff003c110adfec3_96347074

@@ -8,10 +8,10 @@
 <header>
 </header>
 <h3>Sha256 Verification</h3>
-<div id="inputhash"></div><br>
 <div id="inputsalt"></div><br>
-<div id="verification" style="font-weight: bolder;"></div><br>
+<div id="inputhash"></div><br>
 <div id="outputhash"></div><br>
+<div id="verification" style="font-weight: bolder;"></div><br>
 <h3>Random Number Verification</h3>
 <div id="inputprand"></div><br>
 <div id="inputsrand"></div><br>
@@ -24,9 +24,9 @@
 <script src="sha256.js"></script>
 <script type="text/javascript">
 const params = new URLSearchParams(location.search)
-inputhash.innerHTML= "Input Hash: " + params.get('hash');
+inputhash.innerHTML= "Claimed Hash: " + params.get('hash');
 inputsalt.innerHTML= "Input Salt: " + params.get('salt');
-outputhash.innerHTML = "Outputhash: " + sha256(params.get('salt'));
+outputhash.innerHTML = "Hash should be: " + sha256(params.get('salt'));
 
 if (sha256(params.get('salt')) === params.get('hash')) verification.innerHTML="Hash equals.";
 else verification.innerHTML="Hash does not equal.";

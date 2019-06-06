@@ -3,13 +3,9 @@
 
 sha256 verification takes 2 arguments:<br>
 salt<br>
-hash
+hash (<b>Claimed hash</br>)
 
-If sha256(salt) is identical to hash provided then <b>Hash equals</b> will be displayed.
-<br>Otherwise <b>Hash does not equal</b> will be displayed.
-
-This script performs a sha256() function on the <i>salt</i> provided, and the compares the result with the claimed <i>hash</i> variable.<br>
-If they're equal, <b>Hash equals</b> will be displayed.
+We compare <i>Claimed hash</i> Agains a function of sha256(salt). If <i>Claimed hash</i> is identical to our own sha(salt) function  then <b>Hash equals</b> will be displayed.
 <br>Otherwise <b>Hash does not equal</b> will be displayed.
 
 <h3>Game outcome verification</h3>

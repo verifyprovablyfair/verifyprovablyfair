@@ -7,22 +7,44 @@
 <body>
 <header>
 </header>
+<h3>Sha256 Verification</h3>
 <div id="inputhash"></div><br>
 <div id="inputsalt"></div><br>
 <div id="verification" style="font-weight: bolder;"></div><br>
 <div id="outputhash"></div><br>
+<h3>Random Number Verification</h3>
+<div id="inputprand"></div><br>
+<div id="inputsrand"></div><br>
+<div id="inputrandmax"></div><br>
+<div id="inputclaimedoutcome"></div><br>
+<div id="calcoutcome"></div><br>
+<div id="verifyoutcome" style="font-weight: bolder;"></div><br>
+<div id="wasitfair" style="font-weight: bolder;"></div><br>
 </body>
 <script src="sha256.js"></script>
 <script type="text/javascript">
 const params = new URLSearchParams(location.search)
 inputhash.innerHTML= "Input Hash: " + params.get('hash');
 inputsalt.innerHTML= "Input Salt: " + params.get('salt');
-outputhash.innerHTML=params.get('hash');
 outputhash.innerHTML = "Outputhash: " + sha256(params.get('salt'));
 
 if (sha256(params.get('salt')) === params.get('hash')) verification.innerHTML="Hash equals.";
 else verification.innerHTML="Hash does not equal.";
 
+inputprand.innerHTML= "Input Player Random: " + params.get('prand');
+inputsrand.innerHTML= "Input Server Random: " + params.get('srand');
+inputrandmax.innerHTML= "Input Random Number Max: " + params.get('randmax');
+inputclaimedoutcome.innerHTML= "Claimed Outcome: " + params.get('outcome');
+
+var verify_outcome = (parseInt(params.get('srand'),10)+parseInt(params.get('prand'),10))%(parseInt(params.get('randmax'),10)+1);
+calcoutcome.innerHTML= "Outcome should be: " + verify_outcome;
+
+
+if (parseInt(params.get('outcome'),10) === verify_outcome) verifyoutcome.innerHTML="Outcome equals.";
+else verifyoutcome.innerHTML="Outcome is NOT equal! Should be "+verify_outcome	;
+
+if (sha256(params.get('salt')) === params.get('hash') && parseInt(params.get('outcome'),10) === verify_outcome) wasitfair.innerHTML="<h3>Your game was provably-fair.</h3>";
+else wasitfair.innerHTML="<h3>Your game was unfair.</h3>";
 </script>
 <style>#forkongithub a{background:#00;color:#00;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#011ccc;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:fixed;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/verifyprovablyfair/verifyprovablyfair">Fork me on GitHub</a></span>
 </html>

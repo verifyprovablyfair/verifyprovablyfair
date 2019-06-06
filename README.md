@@ -14,7 +14,7 @@ Game outcome verification takes 4 arguments:<br>
 srand (ServerRandom)<br>
 prand (PlayerRandom)<br>
 randmax (RandomNumberMax)<br>
-outcome (<b>Claimed</b> Outcome)<br>
+outcome (<b>Claimed Outcome</b>)<br>
 
 It performs the calculation of: (srand+prand)%(randmax+1) and compares it with the <i>Claimed outcome</i><br>
 If it's equal then <b>Outcome equals</b> will be displayed.

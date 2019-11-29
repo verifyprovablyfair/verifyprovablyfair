@@ -26,7 +26,7 @@
 const params = new URLSearchParams(location.search)
 inputhash.innerHTML= "Claimed Hash: " + params.get('hash');
 inputsalt.innerHTML= "Input Salt: " + params.get('salt');
-outputhash.innerHTML = "Hash should be: " + sha256(params.get('salt'));
+outputhash.innerHTML = "Expected Hash: " + sha256(params.get('salt'));
 
 if (sha256(params.get('salt')) === params.get('hash')) verification.innerHTML="Hash equals.";
 else verification.innerHTML="Hash does not equal.";
@@ -38,7 +38,7 @@ inputrandmax.innerHTML= "Input Random Number Max: " + params.get('randmax');
 inputclaimedoutcome.innerHTML= "Claimed Outcome: " + params.get('outcome');
 
 var verify_outcome = (parseInt(params.get('srand'),10)+parseInt(params.get('prand'),10))%(parseInt(params.get('randmax'),10)+1);
-calcoutcome.innerHTML= "Outcome should be: " + verify_outcome;
+calcoutcome.innerHTML= "Expected Outcome: " + verify_outcome;
 
 
 if (parseInt(params.get('outcome'),10) === verify_outcome) verifyoutcome.innerHTML="Outcome equals.";
